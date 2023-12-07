@@ -13,29 +13,23 @@ public class TriggerPlate : MonoBehaviour
 
         if (other.gameObject.name == objTag)
         {
-            if (other.gameObject.name == "RedBox")
+            if (other.gameObject.name == "Battery")
             {
-                raycastScript.redBox = true;
-            }
-            if (other.gameObject.name == "BlueBox")
-            {
-                raycastScript.blueBox = true;
+                raycastScript.Battery = true;
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+
         if (other.gameObject.name == objTag)
         {
-            if (other.gameObject.name == "RedBox")
+            if (other.gameObject.name == "Battery")
             {
-                raycastScript.redBox = false;
-            }
-            if (other.gameObject.name == "BlueBox")
-            {
-                raycastScript.blueBox = false;
+                raycastScript.Battery = false;
             }
         }
     }
 }
+

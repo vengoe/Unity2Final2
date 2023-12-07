@@ -14,13 +14,12 @@ public class RayCastPlayer : MonoBehaviour
 
     public Animator Door;
 
-    bool doorUnlocked = false;
+    public bool doorUnlocked = false;
     MeshRenderer hitObj;
-    public GameObject messageBox;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -43,23 +42,14 @@ public class RayCastPlayer : MonoBehaviour
             if (hit.collider.tag == "PickupItem" && !holdingItem)
             {
                 hitObj = hit.collider.GetComponent<MeshRenderer>();
-                hitObj.materials[1].SetFloat("_Scale", 1.03f);
+
             }
-            if (hit.collider.tag == "DoorButton" && doorUnlocked)
-            {
-                hitObj = hit.collider.GetComponent<MeshRenderer>();
-                hitObj.materials[1].SetFloat("_Scale", 1.03f);
-                messageBox.SetActive(true);
-            }
+
         }
         else if (hitObj != null)
         {
-            hitObj.materials[1].SetFloat("_Scale", 1.0f);
             hitObj = null;
-            if (messageBox.activeSelf)
-            {
-                messageBox.SetActive(false);
-            }
+
         }
     }
 
@@ -89,20 +79,9 @@ public class RayCastPlayer : MonoBehaviour
                 heldObj = null;
             }
         }
-    }
-    public void InteractableObject(InputAction.CallbackContext ctx)
-    {
-        if (ctx.performed)
+        if (doorUnlocked)
         {
-            RaycastHit hit;
-
-            if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance))
-            {
-                if (hit.collider.CompareTag("DoorButton") && doorUnlocked)
-                {
-                    Door.SetTrigger("OpenDoor");
-                }
-            }
+            Door.SetTrigger("OpenDoor");
         }
     }
 }
