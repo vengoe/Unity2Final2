@@ -9,12 +9,11 @@ public class RayCastPlayer : MonoBehaviour
     bool holdingItem = false;
     GameObject heldObj;
 
-    public bool redBox = false;
-    public bool blueBox = false;
+    public bool Battery = false;
 
-    public GameObject doorButton;
-    public Animator leftdoor;
-    public Animator rightdoor;
+
+    public Animator Door;
+
     bool doorUnlocked = false;
     MeshRenderer hitObj;
     public GameObject messageBox;
@@ -28,14 +27,12 @@ public class RayCastPlayer : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(transform.position, transform.forward * raycastDistance, Color.green);
-        if (redBox && blueBox)
+        if (Battery)
         {
-            doorButton.GetComponent<Renderer>().material.color = Color.green;
             doorUnlocked = true;
         }
         else
         {
-            doorButton.GetComponent<Renderer>().material.color = Color.red;
             doorUnlocked = false;
         }
 
@@ -103,8 +100,7 @@ public class RayCastPlayer : MonoBehaviour
             {
                 if (hit.collider.CompareTag("DoorButton") && doorUnlocked)
                 {
-                    leftdoor.SetTrigger("OpenDoor");
-                    rightdoor.SetTrigger("DoorOpened");
+                    Door.SetTrigger("OpenDoor");
                 }
             }
         }
