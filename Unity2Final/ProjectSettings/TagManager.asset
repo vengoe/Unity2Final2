@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ladder
   - PickupItem
+  - LightSwitch
+  - Switch
   layers:
   - Default
   - TransparentFX
