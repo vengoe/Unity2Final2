@@ -1113,12 +1113,6 @@ Transform:
   m_Father: {fileID: 544780314}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &215936286 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3504518921989284409, guid: fd0d7b228b32b0e479e6eef148e573b3,
-    type: 3}
-  m_PrefabInstance: {fileID: 892836382}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &233203847
 Mesh:
   m_ObjectHideFlags: 0
@@ -2936,25 +2930,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 892836382}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &495917307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215936286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff2a5faf3c84d384e843f50d00aea127, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raycastDistance: 5
-  redBox: 0
-  blueBox: 0
-  doorButton: {fileID: 0}
-  leftdoor: {fileID: 0}
-  rightdoor: {fileID: 0}
-  messageBox: {fileID: 0}
 --- !u!43 &504057099
 Mesh:
   m_ObjectHideFlags: 0
@@ -13828,11 +13803,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1255869348}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3504518921989284409, guid: fd0d7b228b32b0e479e6eef148e573b3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 495917307}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd0d7b228b32b0e479e6eef148e573b3, type: 3}
 --- !u!43 &936888557
 Mesh:
