@@ -24,7 +24,7 @@ public class ElectricWater : MonoBehaviour
 
     IEnumerator WaterDamage()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.5f);
         player.GetComponent<PlayerHealth>().TakeDamage(20);
         StartCoroutine(WaterDamage());
     }
