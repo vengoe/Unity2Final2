@@ -24,8 +24,8 @@ public class ElectricWater : MonoBehaviour
 
     IEnumerator WaterDamage()
     {
-        yield return new WaitForSeconds(1.5f);
+        //yield return new WaitForSeconds(1.5f); for some reason both of these have to be commented out because they process keeps repeating itself after only being hit once.
         player.GetComponent<PlayerHealth>().TakeDamage(20);
-        StartCoroutine(WaterDamage());
+        //StartCoroutine(WaterDamage());
     }
 }
