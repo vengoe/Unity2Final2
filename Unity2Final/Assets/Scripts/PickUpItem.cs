@@ -2,26 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpItem : MonoBehaviour
+public class PickupItem : MonoBehaviour
 {
-    ItemCollector collector;
+    public GameObject particleOBJ;
+    public MessageBox msg;
+
     // Start is called before the first frame update
     void Start()
     {
-        collector = GameObject.Find("CoinHUD").GetComponent<ItemCollector>();
+        msg = GameObject.Find("MessageBox").GetComponent<MessageBox>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 0, 1);
+        if(Time.timeScale > 0)
+        transform.Rotate(0, 1, 0);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            collector.ItemCollect();
+            Instantiate(particleOBJ, transform.position, Quaternion.identity);
+            msg.CollectFood(gameObject.name);
             Destroy(gameObject);
         }
     }

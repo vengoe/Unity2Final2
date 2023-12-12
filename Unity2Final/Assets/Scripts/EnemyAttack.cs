@@ -1,29 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
     public Transform attackTransform;
-    public float attackRadius;
-    public float attackDamage = 10.0f;
+    [Range(0, 2)]
+    public float attackRadius = 0.25f;
+    public NavMeshBasic agentScript;
 
-    public void Attack()
+    public void AttackPlayer()
     {
-        Collider[] attackHits = Physics.OverlapSphere(attackTransform.position, attackRadius);
+        Collider[] hitColliders = Physics.OverlapSphere(attackTransform.position, attackRadius);
 
-        foreach(var attackHit in attackHits) 
+        foreach(var hitCollider in hitColliders)
         {
-            if (attackHit.gameObject.CompareTag("Player"))
+            if (hitCollider.CompareTag("Player"))
             {
-                attackHit.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+                hitCollider.GetComponent<PlayerHealth>().TakeDamage(10.0f);
             }
         }
+        agentScript.isAttacking = false;
     }
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackTransform.position, attackRadius);
     }
+
+
 }
