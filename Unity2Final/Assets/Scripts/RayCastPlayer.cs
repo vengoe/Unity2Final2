@@ -11,10 +11,12 @@ public class RayCastPlayer : MonoBehaviour
 
     public bool Battery = false;
 
+    public bool Gas = false;
 
     public Animator Door;
 
     public bool doorUnlocked = false;
+    public bool Escape = false;
     MeshRenderer hitObj;
     // Start is called before the first frame update
     void Start()
@@ -34,7 +36,14 @@ public class RayCastPlayer : MonoBehaviour
         {
             doorUnlocked = false;
         }
+        if (Gas)
+        {
+            Escape = true;
+        } else
+        {
+            Escape = false;
 
+        }
         RaycastHit hit; ;
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, 3.0f))
