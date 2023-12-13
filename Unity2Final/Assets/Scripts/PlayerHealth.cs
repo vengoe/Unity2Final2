@@ -24,11 +24,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        if(transform.position.y < -10 && !gameOver)
+        if(playerHealth <= 0)
         {
             StartCoroutine(GameOver());
-            healthBar.fillAmount = 0;
-
         }
     }
 
@@ -38,7 +36,6 @@ public class PlayerHealth : MonoBehaviour
         healthBar.fillAmount = currentHealth / playerHealth;
         if (currentHealth <= 0)
         {
-            GetComponent<RBCharacterController>().enabled = false;
             StartCoroutine(GameOver());
         }
     }
@@ -48,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
         gameOver = true;
         //messageBoxObj.text = $"You died Game Over!";
         //messageBoxObj.color = Color.red;
-        yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(4);
     }
 }
