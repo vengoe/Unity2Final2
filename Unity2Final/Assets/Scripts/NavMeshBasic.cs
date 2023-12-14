@@ -23,15 +23,6 @@ public class NavMeshBasic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health.gameOver)
-        {
-            if (!gameOverAnim)
-            {
-                PlayCelebration();
-                gameOverAnim = true;
-            }
-            return;
-        }
         agent.destination = player.position;
 
         if (Vector3.Distance(player.position, transform.position) < agent.stoppingDistance && !isAttacking && !health.gameOver) {
@@ -39,11 +30,6 @@ public class NavMeshBasic : MonoBehaviour
             anim.SetTrigger("Attack");
         }
         anim.SetFloat("Move", agent.velocity.magnitude);
-    }
-
-    public void PlayCelebration()
-    {
-        anim.SetTrigger("Celebrate");
     }
 
 }
