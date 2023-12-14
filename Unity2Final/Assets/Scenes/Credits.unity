@@ -311,7 +311,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Credits: put stuff here :/'
+  m_text: "Credits: Victor Lopez and Michael Vangoechea \n\n\nAlso used assests from
+    the Unity Asset Store"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3ec9e3666c88a354fad060043ef557fd, type: 2}
   m_sharedMaterial: {fileID: 2758040081600595850, guid: 3ec9e3666c88a354fad060043ef557fd,

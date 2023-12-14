@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class GasPlate : MonoBehaviour
 {
     public RayCastPlayer raycastScript;
@@ -18,6 +19,9 @@ public class GasPlate : MonoBehaviour
     public Camera playerCamera;
 
     public GameObject Fire;
+
+    int Counter = 0;
+     
 
     public void Start()
     {
@@ -55,6 +59,11 @@ public class GasPlate : MonoBehaviour
     IEnumerator Cutscene()
     {
         yield return new WaitForSeconds(0.00000001f);
+        Counter++;
+        if(Counter == 1000)
+        {
+            SceneManager.LoadScene(5);
+        }
         playerCamera.enabled = false;
         cutsceneCamera.enabled = true;
         EscapePod.GetComponent<Transform>().position += new Vector3(0, 0.75f, 0);
