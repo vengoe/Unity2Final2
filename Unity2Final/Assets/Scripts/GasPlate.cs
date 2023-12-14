@@ -12,6 +12,13 @@ public class GasPlate : MonoBehaviour
     public GameObject InRoomLight2;
     public float timeDelay;
 
+    public GameObject EscapePod;
+
+    public Camera cutsceneCamera;
+    public Camera playerCamera;
+
+    public GameObject Fire;
+
     public void Start()
     {
 
@@ -22,6 +29,7 @@ public class GasPlate : MonoBehaviour
         if (other.gameObject.name == objTag)
         {
             raycastScript.Gas = true;
+            Fire.SetActive(true);
             StartCoroutine(SwitchLight());
 
         }
@@ -37,11 +45,22 @@ public class GasPlate : MonoBehaviour
     }
     IEnumerator SwitchLight()
     {
-        yield return new WaitForSeconds(2.0f);
         InRoomLight.GetComponent<Light>().color = Color.green;
         InRoomLight2.GetComponent<Light>().color = Color.green;
-        yield return new WaitForSeconds(5.0f);
-        
+        yield return new WaitForSeconds(1.0f);
+        StartCoroutine(Cutscene());
+
+
     }
+    IEnumerator Cutscene()
+    {
+        yield return new WaitForSeconds(0.00000001f);
+        playerCamera.enabled = false;
+        cutsceneCamera.enabled = true;
+        EscapePod.GetComponent<Transform>().position += new Vector3(0, 0.75f, 0);
+        StartCoroutine(Cutscene());
+    }
+
 }
+
 
