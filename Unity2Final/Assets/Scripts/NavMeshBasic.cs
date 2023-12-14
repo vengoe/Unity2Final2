@@ -12,7 +12,6 @@ public class NavMeshBasic : MonoBehaviour
 
     public bool isAttacking = false;
     public PlayerHealth health;
-    bool gameOverAnim = false;
     
     // Start is called before the first frame update
     void Start()
@@ -26,8 +25,10 @@ public class NavMeshBasic : MonoBehaviour
         agent.destination = player.position;
 
         if (Vector3.Distance(player.position, transform.position) < agent.stoppingDistance && !isAttacking && !health.gameOver) {
-            isAttacking = true;
             anim.SetTrigger("Attack");
+            isAttacking = true;
+
+            
         }
         anim.SetFloat("Move", agent.velocity.magnitude);
     }
