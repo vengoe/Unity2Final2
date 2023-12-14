@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public Transform attackTransform;
-    [Range(0, 2)]
+    [Range(0, 4)]
     public float attackRadius = 0.25f;
     public NavMeshBasic agentScript;
-
+    [SerializeField] private AudioSource AttackSoundEffect;
     public void AttackPlayer()
     {
         Collider[] hitColliders = Physics.OverlapSphere(attackTransform.position, attackRadius);
@@ -17,7 +17,8 @@ public class EnemyAttack : MonoBehaviour
         {
             if (hitCollider.CompareTag("Player"))
             {
-                hitCollider.GetComponent<PlayerHealth>().TakeDamage(10.0f);
+                hitCollider.GetComponent<PlayerHealth>().TakeDamage(30.0f);
+                AttackSoundEffect.Play();
             }
         }
         agentScript.isAttacking = false;

@@ -6,6 +6,7 @@ using UnityEngine;
 public class ElectricWater : MonoBehaviour
 {
     public GameObject player;
+    [SerializeField] private AudioSource ElectricAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +27,6 @@ public class ElectricWater : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f); //for some reason both of these have to be commented out because they process keeps repeating itself after only being hit once.
         player.GetComponent<PlayerHealth>().TakeDamage(20);
+        ElectricAudio.Play();
     }
 }

@@ -13,7 +13,7 @@ public class FPMovement : MonoBehaviour
     public float jumpStrength = 10.0f;
     float velocity;
     float gravityMultiplier = 3.0f;
-
+    [SerializeField] private AudioSource AttackSoundEffect;
 
     CharacterController controller;
     // Start is called before the first frame update
@@ -45,6 +45,7 @@ public class FPMovement : MonoBehaviour
         movement *= Time.deltaTime;
         movement = transform.TransformDirection(movement);
         controller.Move(movement);
+        
     }
 
 
@@ -52,6 +53,7 @@ public class FPMovement : MonoBehaviour
     {
         h = ctx.ReadValue<Vector2>().x;
         v = ctx.ReadValue<Vector2>().y;
+        AttackSoundEffect.Play();
     }
 
     public void Jump(InputAction.CallbackContext ctx)

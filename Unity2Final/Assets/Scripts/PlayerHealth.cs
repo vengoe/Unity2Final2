@@ -11,9 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public Image healthBar;
     public float playerHealth;
     public float currentHealth;
-    //public TMP_Text messageBoxObj;
     public bool gameOver = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +20,9 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    private void Update()
+    public void Update()
     {
-        if(playerHealth <= 0)
+        if(currentHealth <= 0)
         {
             StartCoroutine(GameOver());
         }
@@ -34,18 +32,11 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.fillAmount = currentHealth / playerHealth;
-        if (currentHealth <= 0)
-        {
-            StartCoroutine(GameOver());
-        }
     }
 
     IEnumerator GameOver()
     {
-        gameOver = true;
-        //messageBoxObj.text = $"You died Game Over!";
-        //messageBoxObj.color = Color.red;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene(4);
     }
 }
