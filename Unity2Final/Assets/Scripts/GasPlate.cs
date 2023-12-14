@@ -60,7 +60,7 @@ public class GasPlate : MonoBehaviour
     {
         yield return new WaitForSeconds(0.00000001f);
         Counter++;
-        if(Counter == 1000)
+        if(Counter == 100)
         {
             SceneManager.LoadScene(5);
         }
